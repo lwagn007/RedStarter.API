@@ -8,7 +8,7 @@ using RedStarter.Database.Contexts;
 
 namespace RedStarter.Database.Migrations
 {
-    [DbContext(typeof(SISContext))]
+    [DbContext(typeof(RedStarterContext))]
     partial class SISContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -177,6 +177,26 @@ namespace RedStarter.Database.Migrations
                     b.HasKey("ApplicationEntityId");
 
                     b.ToTable("ExperienceTableAccess");
+                });
+
+            modelBuilder.Entity("RedStarter.Database.Entities.Note.NoteEntity", b =>
+                {
+                    b.Property<int>("NoteEntityId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTimeOffset>("DateCreated");
+
+                    b.Property<int>("OwnerId");
+
+                    b.Property<string>("Title")
+                        .IsRequired();
+
+                    b.HasKey("NoteEntityId");
+
+                    b.ToTable("NoteTableAccess");
                 });
 
             modelBuilder.Entity("RedStarter.Database.Entities.People.UserEntity", b =>

@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using RedStarter.Database.Entities.Application;
+using RedStarter.Database.Entities.Note;
 using RedStarter.Database.Entities.People;
 using RedStarter.Database.Entities.Roles;
 
 namespace RedStarter.Database.Contexts
 {
-    public class SISContext : IdentityDbContext
+    public class RedStarterContext : IdentityDbContext
         <UserEntity, 
         RoleEntity, 
         int, 
@@ -17,7 +18,7 @@ namespace RedStarter.Database.Contexts
         IdentityRoleClaim<int>, 
         IdentityUserToken<int>>
     {
-        public SISContext(DbContextOptions<SISContext> options) 
+        public RedStarterContext(DbContextOptions<RedStarterContext> options) 
             : base(options) { }
 
         public DbSet<UserEntity> UserTableAccess { get; set; }
@@ -26,6 +27,7 @@ namespace RedStarter.Database.Contexts
         public DbSet<DemographicEntity> DemographicTableAccess { get; set; }
         public DbSet<EducationEntity> EducationTableAccess { get; set; }
         public DbSet<ExperienceEntity> ExperienceTableAccess { get; set; }
+        public DbSet<NoteEntity> NoteTableAccess { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -10,8 +10,8 @@ using RedStarter.Database.Contexts;
 namespace RedStarter.Database.Migrations
 {
     [DbContext(typeof(RedStarterContext))]
-    [Migration("20181217153941_initial")]
-    partial class initial
+    [Migration("20181231154614_notetableadded")]
+    partial class notetableadded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -179,6 +179,24 @@ namespace RedStarter.Database.Migrations
                     b.HasKey("ApplicationEntityId");
 
                     b.ToTable("ExperienceTableAccess");
+                });
+
+            modelBuilder.Entity("RedStarter.Database.Entities.Note.NoteEntity", b =>
+                {
+                    b.Property<int>("NoteEntityId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTimeOffset>("DateCreated");
+
+                    b.Property<string>("Title")
+                        .IsRequired();
+
+                    b.HasKey("NoteEntityId");
+
+                    b.ToTable("NoteTableAccess");
                 });
 
             modelBuilder.Entity("RedStarter.Database.Entities.People.UserEntity", b =>

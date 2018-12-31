@@ -13,12 +13,12 @@ namespace RedStarter.Database.Authorization
     public class AuthRepository : IAuthRepository
     {
         private readonly IMapper _mapper;
-        private readonly SISContext _context;
+        private readonly RedStarterContext _context;
         private readonly UserManager<UserEntity> _userManager;
         private readonly SignInManager<UserEntity> _signInManager;
 
 
-        public AuthRepository(IMapper mapper, SISContext context, 
+        public AuthRepository(IMapper mapper, RedStarterContext context, 
                 UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager)
         {
             _userManager = userManager;

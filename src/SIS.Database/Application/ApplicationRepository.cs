@@ -15,11 +15,11 @@ namespace RedStarter.Database.Application
 {
     public class ApplicationRepository : IApplicationRepository
     {
-        private readonly SISContext _context;
+        private readonly RedStarterContext _context;
         private readonly IMapper _mapper;
         private readonly UserManager<UserEntity> _userManager;
 
-        public ApplicationRepository(SISContext context, IMapper mapper)
+        public ApplicationRepository(RedStarterContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
